@@ -20,7 +20,7 @@ func Randomize() {
 			t.Obj.X = float64(rand.Intn(data.SCREEN_WIDTH - 64))
 			t.Obj.Y = float64(rand.Intn(data.SCREEN_HEIGHT - 64))
 		} else if chance == 2 {
-			// All in a line but some in random places
+			// All in two lines
 			t.Obj.X = float64(rand.Intn(data.SCREEN_WIDTH - 64))
 
 			chance2 := rand.Intn(10)
