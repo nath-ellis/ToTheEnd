@@ -3,6 +3,8 @@ package main
 import (
 	_ "image/png"
 	"log"
+	"math/rand"
+	"time"
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/nath-ellis/ToTheEnd/data"
@@ -10,6 +12,8 @@ import (
 )
 
 func init() {
+	rand.Seed(time.Now().Unix())
+
 	tiles.Init()
 }
 
