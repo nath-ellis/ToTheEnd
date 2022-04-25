@@ -1,7 +1,7 @@
 package tiles
 
 import (
-	"github.com/nath-ellis/ToTheEnd/space"
+	"github.com/nath-ellis/ToTheEnd/data"
 	"github.com/solarlune/resolv"
 )
 
@@ -47,7 +47,7 @@ func Init() {
 
 	// Adds them to the space
 	for _, t := range Tiles {
-		space.Space.Add(t.Obj)
+		data.Space.Add(t.Obj)
 	}
 
 	// Randomizes the position of the tiles

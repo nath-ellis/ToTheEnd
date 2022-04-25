@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/nath-ellis/ToTheEnd/data"
 	"github.com/nath-ellis/ToTheEnd/tiles"
 )
 
@@ -23,11 +24,11 @@ func (g *Game) Draw(screen *ebiten.Image) {
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
-	return 1024, 600
+	return data.SCREEN_WIDTH, data.SCREEN_HEIGHT
 }
 
 func main() {
-	ebiten.SetWindowSize(1024, 600)
+	ebiten.SetWindowSize(data.SCREEN_WIDTH, data.SCREEN_HEIGHT)
 	ebiten.SetWindowTitle("To The End")
 
 	// Runs the game
