@@ -29,7 +29,8 @@ func main() {
 	ebiten.SetWindowSize(1024, 600)
 	ebiten.SetWindowTitle("To The End")
 
+	// Runs the game
 	if err := ebiten.RunGame(&Game{}); err != nil {
-		log.Fatal(err)
+		log.Fatal("Error Running the Game: ", err)
 	}
 }
