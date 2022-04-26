@@ -16,12 +16,40 @@ func Controls() {
 		if c := Player.Obj.Check(-xSpeed, 0, "tile"); c != nil { // left controls
 			xSpeed = c.ContactWithCell(c.Cells[0]).X() // collides the player with the block
 		}
+
+		if Player.WSCool >= 3 { // if the cooldown for changing the frame is at 0
+			if Player.WalkingStage >= 7 {
+				Player.WalkingStage = 0
+			} else {
+				Player.WalkingStage += 1 // moves the stage of the animation along
+			}
+
+			Player.WSCool = 0
+		} else {
+			Player.WSCool += 1
+		}
+
+		Player.IsLeft = true
 		Player.IsWalking = true
 		Player.Obj.X -= xSpeed // moves player
 	} else if ebiten.IsKeyPressed(ebiten.KeyD) || ebiten.IsKeyPressed(ebiten.KeyRight) { // right controls
 		if c := Player.Obj.Check(xSpeed, 0, "tile"); c != nil {
 			xSpeed = c.ContactWithCell(c.Cells[0]).X() // collides the player with the block
 		}
+
+		if Player.WSCool >= 3 {
+			if Player.WalkingStage >= 7 {
+				Player.WalkingStage = 0
+			} else {
+				Player.WalkingStage += 1
+			}
+
+			Player.WSCool = 0
+		} else {
+			Player.WSCool += 1
+		}
+
+		Player.IsLeft = false
 		Player.IsWalking = true
 		Player.Obj.X += xSpeed // moves player
 	} else {

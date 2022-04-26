@@ -17,6 +17,8 @@ type PlayerData struct {
 	Falling      bool
 	IsLeft       bool
 	IsWalking    bool
+	WalkingStage int
+	WSCool       int
 	WalkingLeft  []*ebiten.Image
 	WalkingRight []*ebiten.Image
 }
@@ -33,6 +35,8 @@ func Init() {
 	Player.Falling = false
 	Player.IsLeft = true
 	Player.IsWalking = false
+	Player.WalkingStage = 0
+	Player.WSCool = 0
 
 	data.Space.Add(Player.Obj)
 
