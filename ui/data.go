@@ -14,4 +14,5 @@ func Init() {
 	mouseObj = resolv.NewObject(float64(mouseX), float64(mouseY), 10, 10, "mouse")
 
 	data.Space.Add(mouseObj)
+	data.Space.Add(resolv.NewObject(940, 268, 64, 64, "randomize")) // randomize button
 }
