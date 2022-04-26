@@ -10,6 +10,7 @@ import (
 	"github.com/nath-ellis/ToTheEnd/data"
 	"github.com/nath-ellis/ToTheEnd/player"
 	"github.com/nath-ellis/ToTheEnd/tiles"
+	"github.com/nath-ellis/ToTheEnd/ui"
 )
 
 func init() {
@@ -17,12 +18,15 @@ func init() {
 
 	player.Init()
 
+	ui.Init()
+
 	tiles.Init()
 }
 
 type Game struct{}
 
 func (g *Game) Update() error {
+	ui.Update()
 	player.Controls()
 
 	return nil
