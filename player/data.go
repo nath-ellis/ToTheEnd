@@ -7,34 +7,53 @@ import (
 )
 
 type PlayerData struct {
-	Obj       *resolv.Object
-	IsLeft    bool
-	IsWalking bool
-	Walking   []*ebiten.Image
+	Obj          *resolv.Object
+	IsLeft       bool
+	IsWalking    bool
+	WalkingLeft  []*ebiten.Image
+	WalkingRight []*ebiten.Image
 }
 
 var Player PlayerData
 
 func Init() {
-	Player.Obj = resolv.NewObject(50, 50, 150, 183, "player")
+	Player.Obj = resolv.NewObject(50, 50, 75, 90, "player")
 	Player.IsLeft = true
 	Player.IsWalking = false
 
-	walkingOne, _, _ := ebitenutil.NewImageFromFile("assets/player/1.png")
-	walkingTwo, _, _ := ebitenutil.NewImageFromFile("assets/player/2.png")
-	walkingThree, _, _ := ebitenutil.NewImageFromFile("assets/player/3.png")
-	walkingFour, _, _ := ebitenutil.NewImageFromFile("assets/player/4.png")
-	walkingFive, _, _ := ebitenutil.NewImageFromFile("assets/player/5.png")
-	walkingSix, _, _ := ebitenutil.NewImageFromFile("assets/player/6.png")
-	walkingSeven, _, _ := ebitenutil.NewImageFromFile("assets/player/7.png")
-	walkingEight, _, _ := ebitenutil.NewImageFromFile("assets/player/8.png")
+	walkingOneL, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/left/1.png")
+	walkingTwoL, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/left/2.png")
+	walkingThreeL, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/left/3.png")
+	walkingFourL, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/left/4.png")
+	walkingFiveL, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/left/5.png")
+	walkingSixL, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/left/6.png")
+	walkingSevenL, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/left/7.png")
+	walkingEightL, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/left/8.png")
 
-	Player.Walking = append(Player.Walking, walkingOne)
-	Player.Walking = append(Player.Walking, walkingTwo)
-	Player.Walking = append(Player.Walking, walkingThree)
-	Player.Walking = append(Player.Walking, walkingFour)
-	Player.Walking = append(Player.Walking, walkingFive)
-	Player.Walking = append(Player.Walking, walkingSix)
-	Player.Walking = append(Player.Walking, walkingSeven)
-	Player.Walking = append(Player.Walking, walkingEight)
+	Player.WalkingLeft = append(Player.WalkingLeft, walkingOneL)
+	Player.WalkingLeft = append(Player.WalkingLeft, walkingTwoL)
+	Player.WalkingLeft = append(Player.WalkingLeft, walkingThreeL)
+	Player.WalkingLeft = append(Player.WalkingLeft, walkingFourL)
+	Player.WalkingLeft = append(Player.WalkingLeft, walkingFiveL)
+	Player.WalkingLeft = append(Player.WalkingLeft, walkingSixL)
+	Player.WalkingLeft = append(Player.WalkingLeft, walkingSevenL)
+	Player.WalkingLeft = append(Player.WalkingLeft, walkingEightL)
+
+	walkingOneR, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/right/1.png")
+	walkingTwoR, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/right/2.png")
+	walkingThreeR, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/right/3.png")
+	walkingFourR, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/right/4.png")
+	walkingFiveR, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/right/5.png")
+	walkingSixR, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/right/6.png")
+	walkingSevenR, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/right/7.png")
+	walkingEightR, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/right/8.png")
+
+	Player.WalkingRight = append(Player.WalkingRight, walkingOneR)
+	Player.WalkingRight = append(Player.WalkingRight, walkingTwoR)
+	Player.WalkingRight = append(Player.WalkingRight, walkingThreeR)
+	Player.WalkingRight = append(Player.WalkingRight, walkingFourR)
+	Player.WalkingRight = append(Player.WalkingRight, walkingFiveR)
+	Player.WalkingRight = append(Player.WalkingRight, walkingSixR)
+	Player.WalkingRight = append(Player.WalkingRight, walkingSevenR)
+	Player.WalkingRight = append(Player.WalkingRight, walkingEightR)
 }

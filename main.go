@@ -8,11 +8,14 @@ import (
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/nath-ellis/ToTheEnd/data"
+	"github.com/nath-ellis/ToTheEnd/player"
 	"github.com/nath-ellis/ToTheEnd/tiles"
 )
 
 func init() {
 	rand.Seed(time.Now().Unix())
+
+	player.Init()
 
 	tiles.Init()
 }
@@ -24,6 +27,7 @@ func (g *Game) Update() error {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
+	player.Draw(screen)
 	tiles.Draw(screen)
 }
 
