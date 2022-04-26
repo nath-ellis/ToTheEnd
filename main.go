@@ -23,6 +23,8 @@ func init() {
 type Game struct{}
 
 func (g *Game) Update() error {
+	player.Controls()
+
 	return nil
 }
 

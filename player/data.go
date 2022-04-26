@@ -3,11 +3,15 @@ package player
 import (
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+	"github.com/nath-ellis/ToTheEnd/data"
 	"github.com/solarlune/resolv"
 )
 
 type PlayerData struct {
 	Obj          *resolv.Object
+	XSpeed       float64
+	YSpeed       float64
+	Gravity      float64
 	IsLeft       bool
 	IsWalking    bool
 	WalkingLeft  []*ebiten.Image
@@ -18,8 +22,13 @@ var Player PlayerData
 
 func Init() {
 	Player.Obj = resolv.NewObject(50, 50, 75, 90, "player")
+	Player.XSpeed = 5
+	Player.YSpeed = 3
+	Player.Gravity = 2
 	Player.IsLeft = true
 	Player.IsWalking = false
+
+	data.Space.Add(Player.Obj)
 
 	walkingOneL, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/left/1.png")
 	walkingTwoL, _, _ := ebitenutil.NewImageFromFile("assets/player/walk/left/2.png")
