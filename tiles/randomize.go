@@ -11,8 +11,6 @@ func Randomize() {
 	collectiveYPos := rand.Intn(data.SCREEN_HEIGHT - 64)
 
 	for _, t := range Tiles {
-		data.Space.Remove(t.Obj) // removes it
-
 		// Randomizes the position of the tiles
 		// Numbers are 64 less than screen width and screen height to make sure no tiles are off the screen
 		if chance <= 1 {
@@ -47,6 +45,6 @@ func Randomize() {
 			t.Obj.Y = float64(collectiveYPos)
 		}
 
-		data.Space.Add(t.Obj) // adds it back in the new position
+		t.Obj.Update()
 	}
 }
