@@ -28,12 +28,23 @@ func Controls() {
 		Player.IsWalking = false
 	}
 
+	// Jumping
+	if !Player.Falling {
+		if ebiten.IsKeyPressed(ebiten.KeySpace) {
+			Player.YSpeed = -Player.JumpSpeed
+			Player.Falling = true
+			Player.Jumping = true
+		} else {
+			Player.Jumping = false
+		}
+	}
+
 	// Y Collision
 	ySpeed := Player.YSpeed
 
 	Player.Falling = true
 
-	ySpeed = math.Max(math.Min(ySpeed, 1), -1)
+	ySpeed = math.Max(math.Min(ySpeed, 32), -32)
 
 	cd := ySpeed
 	if ySpeed >= 0 {

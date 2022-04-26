@@ -11,6 +11,8 @@ type PlayerData struct {
 	Obj          *resolv.Object
 	XSpeed       float64
 	YSpeed       float64
+	JumpSpeed    float64
+	Jumping      bool
 	Gravity      float64
 	Falling      bool
 	IsLeft       bool
@@ -23,9 +25,11 @@ var Player PlayerData
 
 func Init() {
 	Player.Obj = resolv.NewObject(50, 50, 75, 90, "player")
-	Player.XSpeed = 3.0
-	Player.YSpeed = 10.0
-	Player.Gravity = 5.0
+	Player.XSpeed = 2.0
+	Player.YSpeed = 6.0
+	Player.JumpSpeed = 6.0
+	Player.Jumping = true
+	Player.Gravity = 0.2
 	Player.Falling = false
 	Player.IsLeft = true
 	Player.IsWalking = false
