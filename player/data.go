@@ -12,6 +12,7 @@ type PlayerData struct {
 	XSpeed       float64
 	YSpeed       float64
 	Gravity      float64
+	Falling      bool
 	IsLeft       bool
 	IsWalking    bool
 	WalkingLeft  []*ebiten.Image
@@ -22,9 +23,10 @@ var Player PlayerData
 
 func Init() {
 	Player.Obj = resolv.NewObject(50, 50, 75, 90, "player")
-	Player.XSpeed = 5
-	Player.YSpeed = 3
-	Player.Gravity = 2
+	Player.XSpeed = 3.0
+	Player.YSpeed = 10.0
+	Player.Gravity = 5.0
+	Player.Falling = false
 	Player.IsLeft = true
 	Player.IsWalking = false
 

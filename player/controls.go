@@ -1,6 +1,10 @@
 package player
 
-import "github.com/hajimehoshi/ebiten/v2"
+import (
+	"math"
+
+	"github.com/hajimehoshi/ebiten/v2"
+)
 
 func Controls() {
 	Player.YSpeed += Player.Gravity // applies gravity
@@ -23,4 +27,38 @@ func Controls() {
 	} else {
 		Player.IsWalking = false
 	}
+
+	// Y Collision
+	ySpeed := Player.YSpeed
+
+	Player.Falling = true
+
+	ySpeed = math.Max(math.Min(ySpeed, 1), -1)
+
+	cd := ySpeed
+	if ySpeed >= 0 {
+		cd++
+	}
+
+	if c := Player.Obj.Check(0, cd, "tile"); c != nil {
+		slide := c.SlideAgainstCell(c.Cells[0], "tile")
+
+		if ySpeed < 0 && c.Cells[0].ContainsTags("tile") && slide != nil && math.Abs(slide.X()) <= 8 {
+			Player.Obj.X += slide.X()
+		} else {
+			if tiles := c.ObjectsByTags("tile"); len(tiles) > 0 && (Player.Falling || Player.Obj.Y >= tiles[0].Y) {
+				ySpeed = c.ContactWithObject(tiles[0]).Y()
+				Player.YSpeed = 0
+
+				// if you are on top of a tile
+				if tiles[0].Y > Player.Obj.Y {
+					Player.Falling = false
+				}
+			}
+		}
+	}
+
+	Player.Obj.Y += ySpeed
+
+	Player.Obj.Update()
 }
